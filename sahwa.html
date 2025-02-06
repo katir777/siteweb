@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كثير</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2b1d0e; /* لون بني مائل للأسود */
+            color: #e0d7d1; /* لون النص */
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #e0d7d1;
+            margin-bottom: 30px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .image-box {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+        .image-box input[type="file"] {
+            display: none;
+        }
+        .image-box label {
+            display: block;
+            background-color: #4a3a2a; /* لون بني داكن */
+            color: #e0d7d1;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .image-box label:hover {
+            background-color: #5a4a3a; /* لون بني داكن فاتح */
+        }
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .text-boxes {
+            display: flex;
+            justify-content: space-between;
+        }
+        .text-boxes input {
+            width: 30%;
+            padding: 5px;
+            border: 1px solid #4a3a2a;
+            border-radius: 5px;
+            background-color: #3a2a1a; /* لون بني داكن */
+            color: #e0d7d1;
+        }
+    </style>
+</head>
+<body>
+    <h1>كثير</h1>
+    <div class="image-container">
+        <!-- الصورة الأولى -->
+        <div class="image-box">
+            <label for="upload-input1">اختر الصورة الأولى</label>
+            <input type="file" id="upload-input1" accept="image/*">
+            <img src="" alt="الصورة الأولى" class="uploaded-image" id="uploaded-image1">
+            <div class="text-boxes">
+                <input type="text" placeholder="النص 1">
+                <input type="text" placeholder="النص 2">
+                <input type="text" placeholder="النص 3">
+            </div>
+        </div>
+
+        <!-- الصورة الثانية -->
+        <div class="image-box">
+            <label for="upload-input2">اختر الصورة الثانية</label>
+            <input type="file" id="upload-input2" accept="image/*">
+            <img src="" alt="الصورة الثانية" class="uploaded-image" id="uploaded-image2">
+            <div class="text-boxes">
+                <input type="text" placeholder="النص 1">
+                <input type="text" placeholder="النص 2">
+                <input type="text" placeholder="النص 3">
+            </div>
+        </div>
+
+        <!-- الصورة الثالثة -->
+        <div class="image-box">
+            <label for="upload-input3">اختر الصورة الثالثة</label>
+            <input type="file" id="upload-input3" accept="image/*">
+            <img src="" alt="الصورة الثالثة" class="uploaded-image" id="uploaded-image3">
+            <div class="text-boxes">
+                <input type="text" placeholder="النص 1">
+                <input type="text" placeholder="النص 2">
+                <input type="text" placeholder="النص 3">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // دالة لعرض الصور المرفوعة
+        function setupImageUpload(inputId, imageId) {
+            const uploadInput = document.getElementById(inputId);
+            const uploadedImage = document.getElementById(imageId);
+
+            uploadInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        uploadedImage.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // إعداد رفع الصور للخانات الثلاث
+        setupImageUpload('upload-input1', 'uploaded-image1');
+        setupImageUpload('upload-input2', 'uploaded-image2');
+        setupImageUpload('upload-input3', 'uploaded-image3');
+    </script>
+</body>
+</html>
